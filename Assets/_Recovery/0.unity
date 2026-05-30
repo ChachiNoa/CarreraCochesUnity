@@ -2733,7 +2733,6 @@ GameObject:
   m_Component:
   - component: {fileID: 629171045}
   - component: {fileID: 629171044}
-  - component: {fileID: 629171046}
   m_Layer: 0
   m_Name: NPC_Spawner
   m_TagString: Untagged
@@ -2785,25 +2784,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1044813628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &629171046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629171043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eee3774fce92ba54984e0f91a75ecc77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCGameManager
-  limiteObjetivo: 10
-  sonidoClaxon: {fileID: 8300000, guid: ec18083f65e41694881f054746c8355b, type: 3}
-  rangoBocina: 30
-  sonidoVictoria: {fileID: 8300000, guid: 68123888b4742344f92e0dd1e23da3ff, type: 3}
-  sonidoDerrota: {fileID: 8300000, guid: 1b0c0f2d86fa00c419d15d1435369056, type: 3}
-  sonidoAsustados: {fileID: 8300000, guid: ddef45118b064f14ba261cd3006851b7, type: 3}
-  sonidoPantallaFin: {fileID: 0}
 --- !u!1 &633486936 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3348641785564449632, guid: b97a930929a95154b85d0742ab015eb9, type: 3}
@@ -2830,9 +2810,6 @@ MonoBehaviour:
   tiempoDesaparecer: 10
   masaNPC: 3
   sonidoAtropello: {fileID: 8300000, guid: e421661b144b02049957f0a5ce00721e, type: 3}
-  sonidoSusto: {fileID: 8300000, guid: f6db0ee41427164488c8eed02deec7e9, type: 3}
-  fuerzaSustoArriba: 100
-  fuerzaRotacionSusto: 100
 --- !u!1001 &648609282
 PrefabInstance:
   m_ObjectHideFlags: 0

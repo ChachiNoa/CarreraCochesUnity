@@ -40,6 +40,14 @@ public class SimpleNPCWalker : MonoBehaviour
     [Header("Ajustes de Sonido")]
     [Tooltip("Arrastra aquí el archivo de sonido (.mp3, .wav) que sonará al ser atropellado.")]
     public AudioClip sonidoAtropello;
+    [Tooltip("Arrastra aquí el archivo de sonido (.mp3, .wav) que sonará cuando el NPC se ASUSTE con la bocina.")]
+    public AudioClip sonidoSusto;
+
+    [Header("Ajustes de Susto (Bocina)")]
+    [Tooltip("Fuerza hacia ARRIBA con la que el NPC saldrá disparado al asustarse. Súbela para que vuelen más alto.")]
+    public float fuerzaSustoArriba = 20f;
+    [Tooltip("Fuerza de rotación aleatoria al asustarse (giros en el aire).")]
+    public float fuerzaRotacionSusto = 20f;
 
     // Referencias a los huesos del modelo 3D
     private Transform piernaIzquierda;
@@ -285,17 +293,22 @@ public class SimpleNPCWalker : MonoBehaviour
             NPCGameManager.Instance.RegistrarPeatonAsustado();
         }
 
+        // Reproducir el sonido de susto en el punto 3D del NPC
+        if (sonidoSusto != null)
+        {
+            AudioSource.PlayClipAtPoint(sonidoSusto, transform.position);
+        }
+
         // Liberamos restricciones físicas para que salga volando y dando vueltas
         rb.constraints = RigidbodyConstraints.None;
         rb.isKinematic = false;
 
-        // Fuerza puramente hacia arriba de forma brusca
-        Vector3 fuerzaSusto = Vector3.up * 20f;
-        rb.AddForce(fuerzaSusto, ForceMode.Impulse);
+        // Fuerza hacia arriba configurable desde el Inspector
+        rb.AddForce(Vector3.up * fuerzaSustoArriba, ForceMode.Impulse);
 
-        // Torque aleatorio para rotación brusca
+        // Torque aleatorio para rotación brusca configurable
         Vector3 rotacionSusto = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f));
-        rb.AddTorque(rotacionSusto * 20f, ForceMode.Impulse);
+        rb.AddTorque(rotacionSusto * fuerzaRotacionSusto, ForceMode.Impulse);
 
         Destroy(gameObject, tiempoDesaparecer);
     }
